@@ -48,6 +48,10 @@ noremap <C-d> <C-d>zz
 noremap <C-u> <C-u>zz
 noremap n nzzzv
 noremap N Nzzzv
+noremap { {zz
+noremap } }zz
+noremap <C-j> }zz
+noremap <C-k> {zz
 ]])
 
 
