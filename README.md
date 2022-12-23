@@ -1,6 +1,14 @@
 # my-vim
 
 ## Neovim
+```bash
+brew install neovim
+# for who are not native English speakers
+brew tap daipeihust/tap && brew install im-select
+# the config file
+mkdir -p ~/.config/nvim && vim ~/.config/nvim/init.lua
+```
+
 ```lua
 -- [[ ~/.config/nvim/init.lua ]]
 
