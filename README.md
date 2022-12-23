@@ -1,4 +1,15 @@
 # my-vim
+## Zsh
+```bash
+# nvim
+alias vim='nvim'
+alias vimz='nvim ~/.zshrc'
+alias vimr='nvim ~/.config/nvim/init.lua'
+alias vimp='nvim ~/.zshrcPlayground'
+## yabai&skhd
+alias vimy='nvim ~/.config/yabai/yabairc'
+alias vims='nvim ~/.config/skhd/skhdrc'
+```
 
 ## Neovim
 ```bash
