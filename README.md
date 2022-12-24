@@ -14,8 +14,6 @@ alias vims='nvim ~/.config/skhd/skhdrc'
 ## Neovim
 ```bash
 brew install neovim
-# for who are not native English speakers
-brew tap daipeihust/tap && brew install im-select
 # the config file
 mkdir -p ~/.config/nvim && vim ~/.config/nvim/init.lua
 ```
@@ -32,8 +30,6 @@ local g = vim.g
 vim.cmd([[
 mapclear!
 
-" brew tap daipeihust/tap && brew install im-select
-inoremap <C-c> <C-c>:!im-select com.apple.keylayout.ABC<CR><CR>
 nnoremap <leader>vf va{Vo
 " special copy and paste
 vnoremap <leader>y "*y
@@ -114,4 +110,17 @@ config = {
     package_root = vim.fn.stdpath('config') .. '/site/pack'
 }})
 
+```
+
+### for who are not native English speakers (macOS)
+```bash
+brew tap daipeihust/tap && brew install im-select
+```
+```lua
+-- [[ ~/.config/nvim/init.lua ]]
+-- vimscript make map easier
+vim.cmd([[
+" brew tap daipeihust/tap && brew install im-select
+inoremap <C-c> <C-c>:!im-select com.apple.keylayout.ABC<CR><CR>
+]])
 ```
