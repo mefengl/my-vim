@@ -23,13 +23,17 @@ mkdir -p ~/.config/nvim && vim ~/.config/nvim/init.lua
 
 --2 try
 
-vim.g.mapleader = " "
-local g = vim.g
-
 -- vimscript make map easier
 vim.cmd([[
 mapclear!
 
+" map leader to space
+let mapleader = " "
+"2 try
+noremap gp yypkgccj
+
+" brew tap daipeihust/tap && brew install im-select
+inoremap <C-c> <C-c>:!im-select com.apple.keylayout.ABC<CR><CR>
 nnoremap <leader>vf va{Vo
 " special copy and paste
 vnoremap <leader>y "*y
@@ -48,67 +52,61 @@ noremap { {zz
 noremap } }zz
 noremap <C-j> }zz
 noremap <C-k> {zz
+
+" highlight when yank
+au TextYankPost * silent! lua vim.highlight.on_yank()
+
+" plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin()
+Plug 'mhinz/vim-startify'
+Plug 'jghauser/mkdir.nvim'
+
+Plug 'wakatime/vim-wakatime'
+Plug 'github/copilot.vim'
+
+Plug 'echasnovski/mini.nvim'
+
+Plug  'kana/vim-textobj-user' 
+Plug 'kana/vim-textobj-entire'
+
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sensible' 
+Plug 'tpope/vim-commentary'
+call plug#end()
+
+" set up variables
+let g:t_co = 256
+let g:background = "dark"
+
+" set up options
+set number
+set relativenumber
+set scrolloff=7
+set signcolumn=number
+
+syntax on
+set termguicolors
+
+set ignorecase
+set smartcase
+set nohlsearch
+
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+
+set splitright
+set splitbelow
 ]])
-
-
--- [[ vars ]]
-g.t_co = 256
-g.background = "dark"
-
--- [[ opt ]]
-local opt = vim.opt
-
-opt.number = true
-opt.relativenumber = true 
-opt.scrolloff = 7                
-opt.signcolumn = "number"
-
-opt.syntax = "ON"
-opt.termguicolors = true
-
-opt.ignorecase = true            
-opt.smartcase = true             
-opt.hlsearch = false             
-
-opt.expandtab = true             
-opt.shiftwidth = 4               
-opt.softtabstop = 4              
-opt.tabstop = 4                  
-
-opt.splitright = true            
-opt.splitbelow = true            
-
--- [[ plug ]]
--- Update the packpath
-vim.o.packpath = vim.o.packpath .. ',' .. vim.fn.stdpath('config') .. '/site'
-local map = vim.api.nvim_set_keymap
--- try
-
-map('n', '<leader>ps', ':PackerSync<CR>', {noremap = true})
-
 require('mini.completion').setup() -- auto show completion
 require('mini.cursorword').setup() -- highlight current word
 require('mini.pairs').setup() -- ()[]{}""''
-
-return require('packer').startup({function(use)
-    --2 try 
-    use 'mhinz/vim-startify'
-    use 'jghauser/mkdir.nvim'
-
-    use 'wakatime/vim-wakatime'
-    use 'github/copilot.vim'
-
-    use 'echasnovski/mini.nvim'
-    use {'kana/vim-textobj-entire', -- yae
-    requires = 'kana/vim-textobj-user' }
-    use 'tpope/vim-surround' -- S
-    use 'tpope/vim-sensible' -- nothing
-    use 'tpope/vim-commentary' -- gcc
-
-end,
-config = {
-    package_root = vim.fn.stdpath('config') .. '/site/pack'
-}})
 
 ```
 
