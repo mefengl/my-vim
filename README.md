@@ -122,3 +122,10 @@ vim.cmd([[
 inoremap <C-c> <C-c>:!im-select com.apple.keylayout.ABC<CR><CR>
 ]])
 ```
+
+## VSCode
+
+### VSCode Neovim
+Extension: https://marketplace.visualstudio.com/items?itemName=asvetliakov.vscode-neovim
+
+https://github.com/vscode-neovim/vscode-neovim#-getting-started
